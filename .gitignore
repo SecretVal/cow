@@ -1,0 +1,5 @@
+.direnv/
+make
+cow
+.ccls-cache
+
