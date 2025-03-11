@@ -53,14 +53,14 @@ struct Expression {
 void print_expr(Expression expr, int level);
 
 typedef struct {
-  char *name;
-  Expression expr;
-} Declaration;
+  char *lhs;
+  Expression rhs;
+} Rule;
 
-void print_decl(Declaration decl);
+void print_decl(Rule decl);
 
 typedef struct {
-  Declaration *items;
+  Rule *items;
   size_t count;
   size_t cap;
 } Grammar;
@@ -87,7 +87,7 @@ Range parse_range(Parser *parser);
 
 Expression parse_expr(Parser *parser);
 
-Declaration parse_decl(Parser *parser);
+Rule parse_decl(Parser *parser);
 
 Parser parse(Lexer lexer);
 #endif // PARSER_H

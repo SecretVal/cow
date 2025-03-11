@@ -31,9 +31,9 @@ void print_expr(Expression expr, int level) {
   return;
 }
 
-void print_decl(Declaration decl) {
-  println("- %s", decl.name);
-  print_expr(decl.expr, 0);
+void print_decl(Rule decl) {
+  println("- %s", decl.lhs);
+  print_expr(decl.rhs, 0);
   return;
 }
 
@@ -136,11 +136,11 @@ Expression parse_expr(Parser *parser) {
   return e;
 }
 
-Declaration parse_decl(Parser *parser) {
-  Declaration decl;
-  decl.name = parser_expect(parser, TK_IDENT).ident;
+Rule parse_decl(Parser *parser) {
+  Rule decl;
+  decl.lhs = parser_expect(parser, TK_IDENT).ident;
   parser_expect(parser, TK_EQ);
-  decl.expr = parse_expr(parser);
+  decl.rhs = parse_expr(parser);
   return decl;
 }
 

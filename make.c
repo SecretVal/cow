@@ -13,8 +13,8 @@ const char *SOURCE_FILES[] = {
 
     "src/cli/cli.c",
 
-    "src/ast/lexer.c",
-    "src/ast/parser.c",
+    "src/grammar/lexer.c",
+    "src/grammar/parser.c",
 
     "src/typechecker/typechecker.c",
 };

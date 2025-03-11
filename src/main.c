@@ -2,8 +2,8 @@
 #define STC_STRIP_PREFIX
 #include <stc.h>
 
-#include "ast/lexer.h"
-#include "ast/parser.h"
+#include "grammar/lexer.h"
+#include "grammar/parser.h"
 
 #include "typechecker/typechecker.h"
 
