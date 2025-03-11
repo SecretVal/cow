@@ -3,10 +3,10 @@
 #include "typechecker.h"
 void typecheck_ast(Grammar ast) {
   for (size_t i = 0; i < ast.count; ++i) {
-    Rule decl = ast.items[i];
-    switch (decl.rhs.kind) {
+    Rule rule = ast.items[i];
+    switch (rule.rhs.kind) {
     case EK_SEQ:
-      Sequence s = decl.rhs.seq;
+      Sequence s = rule.rhs.seq;
       for (size_t j = 0; j < s.count; ++j) {
         Expression e = s.items[j];
         if (e.kind != EK_TYPE)
@@ -23,7 +23,7 @@ void typecheck_ast(Grammar ast) {
       }
       break;
     case EK_CHOICE:
-      Choice c = decl.rhs.choice;
+      Choice c = rule.rhs.choice;
       for (size_t j = 0; j < c.count; ++j) {
         Expression e = c.items[j];
         if (e.kind != EK_TYPE)
@@ -43,11 +43,11 @@ void typecheck_ast(Grammar ast) {
     case EK_TYPE:
       bool found = false;
       for (size_t j = 0; j < ast.count; ++j) {
-        if (strcmp(ast.items[j].lhs, decl.rhs.type) == 0)
+        if (strcmp(ast.items[j].lhs, rule.rhs.type) == 0)
           found = true;
       }
       if (!found) {
-        println("%s is not declared anywhere", decl.rhs.type);
+        println("%s is not declared anywhere", rule.rhs.type);
         exit(1);
       }
     case EK_CHAR:

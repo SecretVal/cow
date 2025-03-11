@@ -57,7 +57,7 @@ typedef struct {
   Expression rhs;
 } Rule;
 
-void print_decl(Rule decl);
+void print_rule(Rule rule);
 
 typedef struct {
   Rule *items;
@@ -87,7 +87,7 @@ Range parse_range(Parser *parser);
 
 Expression parse_expr(Parser *parser);
 
-Rule parse_decl(Parser *parser);
+Rule parse_rule(Parser *parser);
 
 Parser parse(Lexer lexer);
 #endif // PARSER_H

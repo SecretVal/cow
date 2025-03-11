@@ -31,15 +31,15 @@ void print_expr(Expression expr, int level) {
   return;
 }
 
-void print_decl(Rule decl) {
-  println("- %s", decl.lhs);
-  print_expr(decl.rhs, 0);
+void print_rule(Rule rule) {
+  println("- %s", rule.lhs);
+  print_expr(rule.rhs, 0);
   return;
 }
 
 void print_grammar(Grammar g) {
   for (size_t i = 0; i < g.count; ++i) {
-    print_decl(g.items[i]);
+    print_rule(g.items[i]);
   }
 }
 
@@ -136,12 +136,12 @@ Expression parse_expr(Parser *parser) {
   return e;
 }
 
-Rule parse_decl(Parser *parser) {
-  Rule decl;
-  decl.lhs = parser_expect(parser, TK_IDENT).ident;
+Rule parse_rule(Parser *parser) {
+  Rule rule;
+  rule.lhs = parser_expect(parser, TK_IDENT).ident;
   parser_expect(parser, TK_EQ);
-  decl.rhs = parse_expr(parser);
-  return decl;
+  rule.rhs = parse_expr(parser);
+  return rule;
 }
 
 Parser parse(Lexer lexer) {
@@ -150,7 +150,7 @@ Parser parse(Lexer lexer) {
       .tok = lexer.tokens.items[0],
   };
   while (parser.tokens.count > 0) {
-    da_push(&parser.grammar, parse_decl(&parser));
+    da_push(&parser.grammar, parse_rule(&parser));
   }
   return parser;
 }
