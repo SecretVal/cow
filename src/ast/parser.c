@@ -37,6 +37,12 @@ void print_decl(Declaration decl) {
   return;
 }
 
+void print_grammar(Grammar g) {
+  for (size_t i = 0; i < g.count; ++i) {
+    print_decl(g.items[i]);
+  }
+}
+
 Token parser_consume(Parser *parser) {
   shift(parser->tokens.items, parser->tokens.count);
   parser->tok = parser->tokens.items[0];
@@ -144,7 +150,7 @@ Parser parse(Lexer lexer) {
       .tok = lexer.tokens.items[0],
   };
   while (parser.tokens.count > 0) {
-    da_push(&parser.ast, parse_decl(&parser));
+    da_push(&parser.grammar, parse_decl(&parser));
   }
   return parser;
 }

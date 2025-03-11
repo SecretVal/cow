@@ -31,12 +31,12 @@
             buildInputs = with pkgs; [gcc inputs.stc.packages.${system}.default gnumake];
 
             buildPhase = ''
-              make all
+              make -B all
             '';
 
             installPhase = ''
               mkdir -p $out/bin
-              mv ${name} $out/bin
+              mv build/${name} $out/bin
             '';
           };
         };

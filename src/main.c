@@ -34,8 +34,7 @@ int main(int argc, char *argv[]) {
     }
   Parser p = parse(l);
   if (cli_arg_enabled(cli, PREFIX "ast"))
-    for (size_t i = 0; i < p.ast.count; ++i)
-      print_decl(p.ast.items[i]);
-  typecheck_ast(p.ast);
+    print_grammar(p.grammar);
+  typecheck_ast(p.grammar);
   return 0;
 }

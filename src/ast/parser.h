@@ -65,9 +65,11 @@ typedef struct {
   size_t cap;
 } Grammar;
 
+void print_grammar(Grammar g);
+
 typedef struct {
   Tokens tokens;
-  Grammar ast;
+  Grammar grammar;
   Token tok;
 } Parser;
 
