@@ -28,10 +28,10 @@
             pname = name;
             src = ./.;
 
-            buildInputs = with pkgs; [gcc inputs.stc.packages.${system}.default gnumake];
+            buildInputs = with pkgs; [gcc inputs.stc.packages.${system}.default just];
 
             buildPhase = ''
-              make -B all
+              just all
             '';
 
             installPhase = ''
