@@ -74,6 +74,7 @@ int main(int argc, char **argv) {
   }
   if (!valid_cmd) {
     log(STC_ERROR, " %s is not a known command", sub_cmd);
+    return 1;
   }
   return 0;
 }

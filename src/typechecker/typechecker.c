@@ -1,7 +1,7 @@
 // TODO: Revamp this hole typechecker because the current version is quite bruce
 // force Also it would be nice to show where the problem is
 #include "typechecker.h"
-void typecheck_ast(Grammar ast) {
+void typecheck_grammar(Grammar ast) {
   for (size_t i = 0; i < ast.count; ++i) {
     Rule rule = ast.items[i];
     switch (rule.rhs.kind) {

@@ -4,6 +4,6 @@
 #include "../grammar/parser.h"
 #include <stdbool.h>
 
-void typecheck_ast(Grammar ast);
+void typecheck_grammar(Grammar ast);
 
 #endif // TYPECHECKER_H

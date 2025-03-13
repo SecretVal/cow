@@ -35,6 +35,6 @@ int main(int argc, char *argv[]) {
   Parser p = parse(l);
   if (cli_arg_enabled(cli, PREFIX "ast"))
     print_grammar(p.grammar);
-  typecheck_ast(p.grammar);
+  typecheck_grammar(p.grammar);
   return 0;
 }
